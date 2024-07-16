@@ -1,0 +1,15 @@
+name: events
+run-name: Eventos
+
+on:
+    - push
+    - pull_request
+
+jobs:
+    show-ref-and-sha:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo SHA and REF
+              run: |
+                echo $GITHUB_SHA
+                echo $GITHUB_REF
