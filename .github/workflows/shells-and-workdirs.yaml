@@ -4,6 +4,10 @@ run-name: Shells e Diretorios de Trabalho
 on:
   - push
 
+# defaults:
+#   run:
+#     shell: pwsh
+
 jobs:
   display-wordir-info:
     runs-on: ubuntu-latest
@@ -15,3 +19,8 @@ jobs:
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
+      - name: Python Shell
+        shell: python
+        run: |
+          import platform
+          print(platform.processor())
