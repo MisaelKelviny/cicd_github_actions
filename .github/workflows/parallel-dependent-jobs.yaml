@@ -22,7 +22,7 @@ jobs:
         run: echo "Builds for Linux"
 
   build-for-windows:
-    runs-on: window-latest
+    runs-on: windows-latest
     needs: test-application
     steps:
       - name: Build for windows
