@@ -15,4 +15,13 @@ jobs:
 
       - name: Only on pull request
         if: github.event_name == 'pull_request'
-        run: echo 'Foi feito um pull request;'
+        run: echo 'Foi feito um pull request;']
+
+      - name: Failure
+        run: doesnotexists
+
+      - name: Echo string
+        run: echo 'Olá Github actions'
+
+      - name: Execute on Failure
+        run: echo 'O workflow falhou'
