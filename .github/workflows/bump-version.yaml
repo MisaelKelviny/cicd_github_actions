@@ -8,9 +8,6 @@ on:
 
 jobs:
   bump-version:
-    defaults:
-      run:
-        working-directory: ./tw-todos/
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
@@ -20,9 +17,8 @@ jobs:
         with:
           token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           fetch-depth: 0
-      - name: Print Version
-        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
-      - name: Create bump and changelog
+      - id: cz
+        name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -34,3 +30,5 @@ jobs:
           tag_name: ${{ env.REVISION }}
         env:
           GITHUB_TOKEN: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+      - name: Print Version
+        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
