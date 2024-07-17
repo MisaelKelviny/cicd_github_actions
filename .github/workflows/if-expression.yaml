@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Only on push
         if: github.event_name == 'push'
-        run: echo 'Foi feito um push'
+        run: echo 'Foi feito um push;'
 
       - name: Only on pull request
         if: github.event_name == 'pull_request'
-        run: echo 'Foi feito um pull request'
+        run: echo 'Foi feito um pull request;'
