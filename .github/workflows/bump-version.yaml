@@ -22,8 +22,6 @@ jobs:
           fetch-depth: 0
       - name: Print Version
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
-      - name: Change folder
-        run: ls -la && cd ./tw-todos
       - name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
         with:
