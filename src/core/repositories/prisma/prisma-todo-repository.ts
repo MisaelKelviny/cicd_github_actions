@@ -3,6 +3,9 @@ import { Todo } from '@/core/domain/todo';
 import { TodoRepository } from '../todo-repository';
 
 export class PrismaTodoRepository implements TodoRepository {
+  update(todo: Todo, id: number): Promise<Todo | null> {
+    throw new Error('Method not implemented.');
+  }
 
   async getAll(): Promise<Todo[]> {
     return await prisma.todo.findMany();
@@ -19,5 +22,4 @@ export class PrismaTodoRepository implements TodoRepository {
   async delete(id: number): Promise<void> {
     await prisma.todo.delete({ where: { id } });
   }
-
 }

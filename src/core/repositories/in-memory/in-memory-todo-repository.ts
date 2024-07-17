@@ -2,7 +2,6 @@ import { Todo } from '@/core/domain/todo';
 import { TodoRepository } from '../todo-repository';
 
 export class InMemoryTodoRepository implements TodoRepository {
-
   private _todos: Todo[];
 
   constructor(todos: Todo[] = []) {
@@ -18,6 +17,9 @@ export class InMemoryTodoRepository implements TodoRepository {
     } else {
       this._todos = todos;
     }
+  }
+  update(todo: Todo, id: number): Promise<Todo | null> {
+    throw new Error('Method not implemented.');
   }
 
   getAll(): Promise<Todo[]> {
@@ -40,5 +42,4 @@ export class InMemoryTodoRepository implements TodoRepository {
     this._todos = this._todos.filter((todo) => todo.id !== id);
     return Promise.resolve();
   }
-
 }
