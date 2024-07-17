@@ -2,7 +2,10 @@ name: events
 run-name: Eventos
 
 on:
-    - issues
+    issues:
+        types: 
+            - opened
+    # - issues <- sem tipo
     # - push
     # - pull_request
 
