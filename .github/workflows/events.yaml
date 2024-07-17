@@ -2,8 +2,9 @@ name: events
 run-name: Eventos
 
 on:
-    - push
-    - pull_request
+    - issues
+    # - push
+    # - pull_request
 
 jobs:
     show-ref-and-sha:
