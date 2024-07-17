@@ -1,6 +1,6 @@
+import { Todo } from '@/core/domain/todo';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { InMemoryTodoRepository } from './in-memory-todo-repository';
-import { Todo } from '@/core/domain/todo';
 
 describe('InMemoryTodoRepository (Unit)', () => {
   let sut: InMemoryTodoRepository;
@@ -54,5 +54,27 @@ describe('InMemoryTodoRepository (Unit)', () => {
   it('should be able to delete a todo', () => {
     expect(sut.delete(1)).resolves.toBeUndefined();
     expect(sut.getById(1)).resolves.toBeNull();
+  });
+
+  it('should update when able', () => {
+    const todo = {
+      id: 1,
+      title: 'Todo 1 edited',
+      description: 'Todo 1 description edited',
+      done: true
+    };
+
+    expect(sut.update(todo, 1)).resolves.toEqual(todo);
+  });
+
+  it('should return null when id not found', () => {
+    const todo = {
+      id: 4,
+      title: 'Todo 1 edited',
+      description: 'Todo 1 description edited',
+      done: true
+    };
+
+    expect(sut.update(todo, 4)).resolves.toBe(null);
   });
 });

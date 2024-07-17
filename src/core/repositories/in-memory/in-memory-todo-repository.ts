@@ -2,7 +2,6 @@ import { Todo } from '@/core/domain/todo';
 import { TodoRepository } from '../todo-repository';
 
 export class InMemoryTodoRepository implements TodoRepository {
-
   private _todos: Todo[];
 
   constructor(todos: Todo[] = []) {
@@ -18,6 +17,14 @@ export class InMemoryTodoRepository implements TodoRepository {
     } else {
       this._todos = todos;
     }
+  }
+  update(todo: Todo, id: number): Promise<Todo | null> {
+    const index = this._todos.findIndex((todo) => todo.id === id);
+    if (index === -1) return Promise.resolve(null);
+
+    todo.id = id;
+    this._todos[index] = todo;
+    return Promise.resolve(todo);
   }
 
   getAll(): Promise<Todo[]> {
@@ -40,5 +47,4 @@ export class InMemoryTodoRepository implements TodoRepository {
     this._todos = this._todos.filter((todo) => todo.id !== id);
     return Promise.resolve();
   }
-
 }
