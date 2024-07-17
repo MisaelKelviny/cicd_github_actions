@@ -15,3 +15,4 @@ jobs:
           echo '${{ toJson(steps) }}'
           echo '${{ toJson(runner) }}'
           echo '${{ toJson(env) }}'
+      - run: echo '${{ github.event.commits[0].author.email }}'
