@@ -24,4 +24,5 @@ jobs:
         run: echo 'Olá Github actions'
 
       - name: Execute on Failure
+        if: failure()
         run: echo 'O workflow falhou'
