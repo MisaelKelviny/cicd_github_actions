@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: ./tw-todos/
+
 jobs:
   bump-version:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
