@@ -59,6 +59,6 @@ export class TodoController {
     const useCase = UseCaseFactory.setTodoHasDoneUseCase;
     await useCase.execute(id);
 
-    reply.code(200).send();
+    reply.code(204).send();
   }
 }
