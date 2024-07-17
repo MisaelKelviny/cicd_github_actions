@@ -3,6 +3,7 @@ run-name: If condicional
 
 on:
   - push
+  - pull_request
 
 jobs:
   if-expression:
