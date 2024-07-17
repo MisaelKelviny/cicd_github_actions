@@ -9,6 +9,8 @@ jobs:
   test-and-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Change folder
+        run: cd ./tw-todos
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup node env
