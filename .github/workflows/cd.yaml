@@ -3,6 +3,8 @@ run-name: CD
 
 on:
   push:
+    branches:
+      - main
     tags:
       - "*"
 
