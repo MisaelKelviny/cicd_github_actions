@@ -2,12 +2,17 @@ name: events
 run-name: Eventos
 
 on:
-    issues:
-        types: 
-            - opened
+    # issues:
+    #     types: 
+    #         - opened
     # - issues <- sem tipo
     # - push
     # - pull_request
+    pull_request:
+        types:
+            - opened
+        branches:
+            - release/**
 
 jobs:
     show-ref-and-sha:

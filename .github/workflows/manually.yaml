@@ -1,0 +1,11 @@
+name: manually
+run-name: Workflow manual
+
+on:
+    - workflow_dispatch
+
+jobs:
+    echo-string:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Executando manualmente"
