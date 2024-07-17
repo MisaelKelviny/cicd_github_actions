@@ -5,6 +5,10 @@ on:
   - workflow_call
   - workflow_dispatch
 
+defaults:
+  run:
+    working-directory: "../../tw-todos"
+
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
