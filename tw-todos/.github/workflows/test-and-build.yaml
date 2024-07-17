@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Change folder
-        run: cd ./tw-todos
+        run: cd ./tw-todos && ls -la
       - name: Setup node env
         uses: actions/setup-node@v4
         with:
