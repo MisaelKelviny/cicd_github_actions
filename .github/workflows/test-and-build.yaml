@@ -8,22 +8,15 @@ on:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./tw-todos
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: List files
         run: ls -la
-      # - name: Setup node env
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 18
-      #     cache: npm
-      - name: Setup
-        id: setup
-        uses: khulnasoft-lab/actions-setup-nodejs@main
+      - name: Setup node env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
       - name: Install dependencies
         run: npm ci
       - name: Check lint
