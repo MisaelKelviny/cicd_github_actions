@@ -56,4 +56,11 @@ export class TodoController {
     reply.code(204).send();
   }
 
+
+  static async setTodoHasDone(
+    request: FastifyRequest,
+    reply: FastifyReply
+  ) {
+    throw new Error('Not implemented');
+  }
 }
