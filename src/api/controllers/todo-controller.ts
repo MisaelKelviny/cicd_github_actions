@@ -3,17 +3,13 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
 
 export class TodoController {
-
   static async getAllTodos(_: FastifyRequest, reply: FastifyReply) {
     const usecase = UseCaseFactory.getAllTodosUseCase;
     const todos = await usecase.execute();
     reply.send(todos);
   }
 
-  static async getTodoById(
-    request: FastifyRequest,
-    reply: FastifyReply
-  ) {
+  static async getTodoById(request: FastifyRequest, reply: FastifyReply) {
     const paramSchema = z.object({
       id: z.coerce.number().int().positive()
     });
@@ -40,10 +36,7 @@ export class TodoController {
     reply.code(201).send(newTodo);
   }
 
-  static async deleteTodoById(
-    request: FastifyRequest,
-    reply: FastifyReply
-  ) {
+  static async deleteTodoById(request: FastifyRequest, reply: FastifyReply) {
     const paramSchema = z.object({
       id: z.coerce.number().int().positive()
     });
@@ -56,11 +49,16 @@ export class TodoController {
     reply.code(204).send();
   }
 
+  static async setTodoHasDone(request: FastifyRequest, reply: FastifyReply) {
+    const paramSchema = z.object({
+      id: z.coerce.number().int().positive()
+    });
 
-  static async setTodoHasDone(
-    request: FastifyRequest,
-    reply: FastifyReply
-  ) {
-    throw new Error('Not implemented');
+    const { id } = paramSchema.parse(request.params);
+
+    const useCase = UseCaseFactory.setTodoHasDoneUseCase;
+    await useCase.execute(id);
+
+    reply.code(200).send();
   }
 }
