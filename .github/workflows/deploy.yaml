@@ -21,7 +21,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: misaelkelviny/tw-todos-gha
+          images: misaekelviny/tw-todos-gha
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
